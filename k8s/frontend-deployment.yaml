@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: smart-healthcare-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5173
+          env:
+            # IMPORTANT:
+            # This URL is used by browser-side code.
+            # Set it to a URL the browser can reach (Ingress/LoadBalancer/NodePort of gateway).
+            - name: VITE_API_BASE_URL
+              value: "http://<YOUR_GATEWAY_PUBLIC_HOST>:4000"
