@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointment-service
+  labels:
+    app: appointment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appointment-service
+  template:
+    metadata:
+      labels:
+        app: appointment-service
+    spec:
+      containers:
+        - name: appointment-service
+          image: smart-healthcare-appointment-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4003
+          env:
+            - name: PORT
+              value: "4003"
+            - name: MONGO_URI
+              value: "mongodb+srv://teacups:teacups@teacups.cajbnbv.mongodb.net/appointment-db"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: JWT_SECRET
+            - name: DOCTOR_SERVICE_URL
+              value: "http://doctor-service:4002"
+            - name: NOTIFICATION_SERVICE_URL
+              value: "http://notification-service:4006"
