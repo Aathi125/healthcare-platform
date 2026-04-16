@@ -1,0 +1,14 @@
+services:
+  doctor-service:
+    image: node:20-alpine
+    container_name: doctor-service
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: sh -c "npm install && npm start"
+    ports:
+      - "4002:4002"
+    environment:
+      PORT: 4002
+      MONGO_URI: mongodb+srv://teacups:teacups@teacups.cajbnbv.mongodb.net/doctor-db
+      JWT_SECRET: supersecretkey
