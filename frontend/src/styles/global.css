@@ -1,0 +1,416 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(36, 88, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 2.8vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 2vw, 2.1rem);
+}
+
+h3 {
+  font-size: clamp(1.16rem, 1.5vw, 1.38rem);
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(36, 88, 255, 0.22);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(36, 88, 255, 0.28);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Global Healthcare Icons */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-lg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-xl {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-primary {
+  color: var(--color-primary);
+}
+
+.icon-secondary {
+  color: var(--color-secondary);
+}
+
+.icon-accent {
+  color: var(--color-accent);
+}
+
+.icon-success {
+  color: var(--color-success);
+}
+
+.icon-warning {
+  color: var(--color-warning);
+}
+
+.icon-error {
+  color: var(--color-error);
+}
+
+.icon-muted {
+  color: var(--color-text-muted);
+}
+
+/* Healthcare Specific Icons */
+.icon-heart::before {
+  content: '❤️';
+  font-size: 1em;
+}
+
+.icon-hospital::before {
+  content: '🏥';
+  font-size: 1em;
+}
+
+.icon-stethoscope::before {
+  content: '🩺';
+  font-size: 1em;
+}
+
+.icon-pills::before {
+  content: '💊';
+  font-size: 1em;
+}
+
+.icon-syringe::before {
+  content: '💉';
+  font-size: 1em;
+}
+
+.icon-bandage::before {
+  content: '🩹';
+  font-size: 1em;
+}
+
+.icon-thermometer::before {
+  content: '🌡️';
+  font-size: 1em;
+}
+
+.icon-microscope::before {
+  content: '🔬';
+  font-size: 1em;
+}
+
+.icon-test-tube::before {
+  content: '🧪';
+  font-size: 1em;
+}
+
+.icon-shield::before {
+  content: '🛡️';
+  font-size: 1em;
+}
+
+.icon-lock::before {
+  content: '🔒';
+  font-size: 1em;
+}
+
+.icon-check::before {
+  content: '✅';
+  font-size: 1em;
+}
+
+.icon-clock::before {
+  content: '🕐';
+  font-size: 1em;
+}
+
+.icon-calendar::before {
+  content: '📅';
+  font-size: 1em;
+}
+
+.icon-phone::before {
+  content: '📞';
+  font-size: 1em;
+}
+
+.icon-email::before {
+  content: '📧';
+  font-size: 1em;
+}
+
+.icon-location::before {
+  content: '📍';
+  font-size: 1em;
+}
+
+.icon-user::before {
+  content: '👤';
+  font-size: 1em;
+}
+
+.icon-users::before {
+  content: '👥';
+  font-size: 1em;
+}
+
+.icon-star::before {
+  content: '⭐';
+  font-size: 1em;
+}
+
+.icon-alert::before {
+  content: '⚠️';
+  font-size: 1em;
+}
+
+.icon-info::before {
+  content: 'ℹ️';
+  font-size: 1em;
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-online .status-dot {
+  background: var(--color-success);
+  color: var(--color-success);
+}
+
+.status-offline .status-dot {
+  background: var(--color-text-muted);
+  color: var(--color-text-muted);
+}
+
+.status-busy .status-dot {
+  background: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.status-away .status-dot {
+  background: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Healthcare Badges */
+.healthcare-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.badge-primary {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.badge-success {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.badge-warning {
+  background: var(--color-warning-light);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+}
+
+.badge-error {
+  background: var(--color-error-light);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.badge-info {
+  background: var(--color-info-light);
+  color: var(--color-info);
+  border: 1px solid var(--color-info);
+}
+
+/* Healthcare Patterns */
+.healthcare-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230066cc' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10zm0-18c4.4 0 8 3.6 8 8s-3.6 8-8 8-8-3.6-8-8-8z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.healthcare-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+.healthcare-shadow {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Loading States */
+.loading-skeleton {
+  background: linear-gradient(90deg, var(--color-bg) 25%, var(--color-bg-secondary) 50%, var(--color-bg) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Healthcare Animations */
+.pulse-health {
+  animation: pulse-health 2s infinite;
+}
+
+@keyframes pulse-health {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
