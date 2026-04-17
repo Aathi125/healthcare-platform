@@ -92,7 +92,14 @@ function PatientProfile() {
 
               <label>
                 Phone
-                <input type="text" name="phone" value={form.phone} onChange={handleChange} />
+                <input 
+                  type="text" 
+                  name="phone" 
+                  value={form.phone} 
+                  onChange={handleChange} 
+                  pattern="\d{10}" 
+                  title="Phone number must be exactly 10 digits" 
+                />
               </label>
 
               <label>
