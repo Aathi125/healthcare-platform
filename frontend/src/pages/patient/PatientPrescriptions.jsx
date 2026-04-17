@@ -53,7 +53,7 @@ function PatientPrescriptions() {
   return (
     <section className="dashboard-page patient-prescriptions-page">
       <PageHeader
-        title="My Prescriptions"
+        title="My Prescription"
         subtitle="Review prescribed medicines, consultation notes, and issue dates in one place."
       />
 
