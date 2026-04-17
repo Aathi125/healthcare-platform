@@ -2,19 +2,19 @@
   --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
   --font-heading: "Fraunces", "Georgia", serif;
 
-  /* Professional Healthcare Green & White Color Palette */
-  --color-primary: #16a34a;
-  --color-primary-dark: #15803d;
-  --color-primary-light: #dcfce7;
-  --color-primary-soft: #f0fdf4;
+  /* Professional Healthcare Blue Color Palette */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #dbeafe;
+  --color-primary-soft: #eff6ff;
   
-  --color-secondary: #22c55e;
-  --color-secondary-dark: #16a34a;
-  --color-secondary-light: #dcfce7;
+  --color-secondary: #3b82f6;
+  --color-secondary-dark: #2563eb;
+  --color-secondary-light: #dbeafe;
   
-  --color-accent: #84cc16;
-  --color-accent-dark: #65a30d;
-  --color-accent-light: #ecfccb;
+  --color-accent: #60a5fa;
+  --color-accent-dark: #3b82f6;
+  --color-accent-light: #bfdbfe;
 
   /* Clinical Colors */
   --color-success: #0f9d77;
@@ -30,8 +30,8 @@
   --color-bg: #f8fafc;
   --color-bg-secondary: #f1f5f9;
   --color-surface: #ffffff;
-  --color-surface-soft: #f0fdf4;
-  --color-surface-border: #dcfce7;
+  --color-surface-soft: #eff6ff;
+  --color-surface-border: #dbeafe;
 
   /* Text Colors */
   --color-text: #10243e;
@@ -40,9 +40,9 @@
   --color-text-light: #f8fafc;
 
   /* Border Colors */
-  --color-border: #dcfce7;
-  --color-border-light: #f0fdf4;
-  --color-border-focus: #16a34a;
+  --color-border: #dbeafe;
+  --color-border-light: #eff6ff;
+  --color-border-focus: #2563eb;
 
   /* Professional Shadows */
   --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
