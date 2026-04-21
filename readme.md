@@ -33,7 +33,7 @@ A university telemedicine platform built with **Node.js**, **React**, **MongoDB 
 ### MongoDB Atlas
 
 ```
-mongodb+srv://teacups:teacups@teacups.cajbnbv.mongodb.net/
+mongodb+srv://********************************
 ```
 
 Each service uses its own database: `auth-db`, `doctor-db`, `appointment-db`, `patient-db`, `payment-db`.
