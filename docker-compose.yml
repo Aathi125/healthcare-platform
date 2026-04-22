@@ -1,0 +1,126 @@
+services:
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    container_name: auth-service
+    env_file:
+      - ./services/auth-service/.env
+    ports:
+      - "4001:4001"
+    volumes:
+      - ./services/auth-service:/app
+      - /app/node_modules
+
+  doctor-service:
+    build:
+      context: ./services/doctor-service
+      dockerfile: Dockerfile
+    container_name: doctor-service
+    env_file:
+      - ./services/doctor-service/.env
+    ports:
+      - "4002:4002"
+    volumes:
+      - ./services/doctor-service:/app
+      - /app/node_modules
+
+  appointment-service:
+    build:
+      context: ./services/appointment-service
+      dockerfile: Dockerfile
+    container_name: appointment-service
+    env_file:
+      - ./services/appointment-service/.env
+    ports:
+      - "4003:4003"
+    volumes:
+      - ./services/appointment-service:/app
+      - /app/node_modules
+    depends_on:
+      - doctor-service
+
+  patient-service:
+    build:
+      context: ./services/patient-service
+      dockerfile: Dockerfile
+    container_name: patient-service
+    env_file:
+      - ./services/patient-service/.env
+    ports:
+      - "4004:4004"
+    volumes:
+      - ./services/patient-service:/app
+      - /app/node_modules
+    depends_on:
+      - appointment-service
+
+  payment-service:
+    build:
+      context: ./services/payment-service
+      dockerfile: Dockerfile
+    container_name: payment-service
+    env_file:
+      - ./services/payment-service/.env
+    ports:
+      - "4005:4005"
+    volumes:
+      - ./services/payment-service:/app
+      - /app/node_modules
+    depends_on:
+      - appointment-service
+
+  notification-service:
+    build:
+      context: ./services/notification-service
+      dockerfile: Dockerfile
+    container_name: notification-service
+    env_file:
+      - ./services/notification-service/.env
+    ports:
+      - "4006:4006"
+    volumes:
+      - ./services/notification-service:/app
+      - /app/node_modules
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    environment:
+      PORT: 4000
+      AUTH_SERVICE_URL: http://auth-service:4001
+      DOCTOR_SERVICE_URL: http://doctor-service:4002
+      APPOINTMENT_SERVICE_URL: http://appointment-service:4003
+      PATIENT_SERVICE_URL: http://patient-service:4004
+      PAYMENT_SERVICE_URL: http://payment-service:4005
+      NOTIFICATION_SERVICE_URL: http://notification-service:4006
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./gateway:/app
+      - /app/node_modules
+    depends_on:
+      - auth-service
+      - doctor-service
+      - appointment-service
+      - patient-service
+      - payment-service
+      - notification-service
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    command: sh -c "[ -x /app/node_modules/.bin/vite ] || npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:4000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - gateway

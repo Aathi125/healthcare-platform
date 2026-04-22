@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-service
+  labels:
+    app: patient-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patient-service
+  template:
+    metadata:
+      labels:
+        app: patient-service
+    spec:
+      containers:
+        - name: patient-service
+          image: smart-healthcare-patient-service:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4004
+          env:
+            - name: PORT
+              value: "4004"
+            - name: MONGO_URI
+              value: "mongodb+srv://teacups:teacups@teacups.cajbnbv.mongodb.net/patient-db"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: JWT_SECRET
+            - name: APPOINTMENT_SERVICE_URL
+              value: "http://appointment-service:4003"
+            - name: NOTIFICATION_SERVICE_URL
+              value: "http://notification-service:4006"
